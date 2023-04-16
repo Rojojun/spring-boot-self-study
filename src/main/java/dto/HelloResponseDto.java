@@ -1,4 +1,4 @@
-package com.rojojun.sprignbootweb.dto;
+package dto;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

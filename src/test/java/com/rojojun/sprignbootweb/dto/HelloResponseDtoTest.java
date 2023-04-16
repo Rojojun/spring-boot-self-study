@@ -1,5 +1,6 @@
 package com.rojojun.sprignbootweb.dto;
 
+import dto.HelloResponseDto;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
