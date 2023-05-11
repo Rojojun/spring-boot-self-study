@@ -3,6 +3,7 @@ package com.rojojun.sprignbootweb.controller;
 import com.rojojun.sprignbootweb.service.posts.PostsService;
 import com.rojojun.sprignbootweb.web.dto.PostsResponseDto;
 import com.rojojun.sprignbootweb.web.dto.PostsSaveRequestDto;
+import com.rojojun.sprignbootweb.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,5 +20,10 @@ public class PostsApiController {
     @GetMapping("/api/v1/posts/{id}")
     public PostsResponseDto findById(@PathVariable Long id) {
         return postsService.findById(id);
+    }
+
+    @PutMapping("/api/v1/posts/{id}")
+    public Long update(@PathVariable Long id, @RequestBody PostsUpdateRequestDto postsUpdateRequestDto) {
+        return postsService.update(id, postsUpdateRequestDto);
     }
 }
