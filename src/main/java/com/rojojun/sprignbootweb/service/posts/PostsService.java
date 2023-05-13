@@ -24,6 +24,7 @@ public class PostsService {
         return new PostsResponseDto(findBoardById(id));
     }
 
+    @Transactional
     public Long update(Long id, PostsUpdateRequestDto postsUpdateRequestDto) {
         Posts posts = findBoardById(id);
 
