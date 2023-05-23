@@ -2,12 +2,16 @@ package com.rojojun.sprignbootweb.service.posts;
 
 import com.rojojun.sprignbootweb.domain.posts.Posts;
 import com.rojojun.sprignbootweb.domain.posts.PostsRepository;
+import com.rojojun.sprignbootweb.web.dto.PostsListResponseDto;
 import com.rojojun.sprignbootweb.web.dto.PostsResponseDto;
 import com.rojojun.sprignbootweb.web.dto.PostsSaveRequestDto;
 import com.rojojun.sprignbootweb.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -36,5 +40,12 @@ public class PostsService {
         return postsRepository.findById(id).orElseThrow(
                 () -> new IllegalArgumentException("사용자가 없습니다. Id=" + id)
         );
+    }
+
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findAllDesc() {
+        return postsRepository.findAllDesc().stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 }
