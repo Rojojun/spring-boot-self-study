@@ -24,8 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                     .anyRequest().authenticated()
                 .and()
-                    .logout()
-                        .logoutSuccessUrl("/")
+                .logout().logoutSuccessUrl("/")
                 .and()
                 .oauth2Login().userInfoEndpoint().userService(customOAuth2UserService);
     }

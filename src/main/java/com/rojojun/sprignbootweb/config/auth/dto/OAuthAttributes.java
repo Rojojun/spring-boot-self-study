@@ -4,6 +4,7 @@ import com.rojojun.sprignbootweb.domain.user.Role;
 import com.rojojun.sprignbootweb.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
+import org.hibernate.procedure.ParameterStrategyException;
 
 import java.util.Map;
 
@@ -25,7 +26,12 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
-        return ofGoogle(userNameAttributeName, attributes);
+        if(registrationId == null) {
+            return ofGoogle(userNameAttributeName, attributes);
+        }
+        else {
+           throw new ParameterStrategyException("resgistrationId가 잘못 입력되었습니다.");
+        }
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {

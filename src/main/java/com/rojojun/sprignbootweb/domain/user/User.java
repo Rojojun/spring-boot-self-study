@@ -10,6 +10,8 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
+// h2 예약어로 인한 임시 어노테이션 설정 -> mySQL 마이그레이션시 변경 예정
+@Table(name = "Users")
 public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
