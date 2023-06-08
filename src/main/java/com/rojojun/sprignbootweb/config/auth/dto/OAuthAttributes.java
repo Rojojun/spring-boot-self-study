@@ -19,7 +19,7 @@ public class OAuthAttributes {
     @Builder
     public OAuthAttributes(Map<String, Object> attributes, String nameAttributeKey, String name, String email, String picture) {
         this.attributes = attributes;
-        this.nameAttributeKey= nameAttributeKey;
+        this.nameAttributeKey = nameAttributeKey;
         this.name = name;
         this.email = email;
         this.picture = picture;
@@ -33,12 +33,11 @@ public class OAuthAttributes {
         return OAuthAttributes.builder()
                 .name((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
-                .email((String) attributes.get("picture"))
+                .picture((String) attributes.get("picture"))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
     }
-
     public User toEntity() {
         return User.builder()
                 .name(name)
