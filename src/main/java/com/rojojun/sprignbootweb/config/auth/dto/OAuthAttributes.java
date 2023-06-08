@@ -26,12 +26,7 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId, String userNameAttributeName, Map<String, Object> attributes) {
-        if(registrationId == null) {
-            return ofGoogle(userNameAttributeName, attributes);
-        }
-        else {
-           throw new ParameterStrategyException("resgistrationId가 잘못 입력되었습니다.");
-        }
+        return ofGoogle(userNameAttributeName, attributes);
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String, Object> attributes) {
